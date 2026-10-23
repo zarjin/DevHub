@@ -1,16 +1,17 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import dotenv from "dotenv";
 import morgan from "morgan";
 import helmet from "helmet";
 import expressRateLimit from "express-rate-limit";
+
 import { errorHandler } from "./middlewares/errorHandler.ts";
 import { notFound } from "./middlewares/notFound.ts";
+import { connectToDatabase } from "./config/db.ts";
 
 const app = express();
 
-dotenv.config();
+await connectToDatabase();
 
 app.use(cors());
 app.use(express.json());
