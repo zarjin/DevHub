@@ -9,6 +9,8 @@ import { errorHandler } from "./middlewares/errorHandler.ts";
 import { notFound } from "./middlewares/notFound.ts";
 import { connectToDatabase } from "./config/db.ts";
 
+import authRouter from "./routes/auth.routes.ts";
+
 const app = express();
 
 await connectToDatabase();
@@ -27,6 +29,7 @@ app.use(
 app.use(morgan("dev"));
 
 // Routes
+app.use("/api/v1/auth", authRouter);
 
 // Error handling
 app.use(errorHandler);
