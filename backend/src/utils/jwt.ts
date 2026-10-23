@@ -13,7 +13,7 @@ export const generateAccessToken = (payload: object) => {
 export const generateRefreshToken = (payload: object) => {
   try {
     return JWT.sign(payload, process.env.REFRESH_TOKEN_SECRET as string, {
-      expiresIn: "15m",
+      expiresIn: "7d",
     });
   } catch (error) {
     console.log(`RefreshToken Generate: ${error}`);
